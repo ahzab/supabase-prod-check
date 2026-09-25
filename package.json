@@ -1,0 +1,42 @@
+{
+  "name": "supabase-prod-check",
+  "version": "0.1.0",
+  "description": "Static checks that catch the Supabase + Next.js mistakes that only show up in production: tables without RLS, service keys in the browser, unauthenticated crons, unsigned Stripe webhooks.",
+  "type": "module",
+  "bin": {
+    "supabase-prod-check": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "scan:example": "node dist/cli.js examples/broken-app"
+  },
+  "keywords": [
+    "supabase",
+    "nextjs",
+    "rls",
+    "security",
+    "static-analysis",
+    "cli",
+    "stripe"
+  ],
+  "author": "Abdelhak Ahzab",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahzab/supabase-prod-check.git"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}
